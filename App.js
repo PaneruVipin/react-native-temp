@@ -12,17 +12,20 @@ const ProfileScreen = ({ navigation, route }) => {
   );
 };
 export default function App() {
+  const HeaderSetting = {
+    header: () => <View className="h-10 bg-blue-300" />,
+  };
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ title: "Welcome" }}
+          options={{ ...HeaderSetting }}
         />
         <Stack.Screen
           name="Profile"
-          options={{ title: "Profile" }}
+          options={{ ...HeaderSetting }}
           component={ProfileScreen}
         />
       </Stack.Navigator>

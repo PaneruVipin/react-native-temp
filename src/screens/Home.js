@@ -7,7 +7,7 @@ export const Home = ({ navigation, route }) => {
   };
   return (
     <View className="min-h-screen ">
-      <View className="w-4/5">
+      <View className="w-4/5 mx-auto mt-10">
         <SignupForm submit={handleSubmit} />
       </View>
     </View>

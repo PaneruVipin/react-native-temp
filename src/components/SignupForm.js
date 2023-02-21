@@ -3,7 +3,6 @@ import { Button, Text, View } from "react-native";
 import { Formik } from "formik";
 import Input from "./attoms/Input";
 import { object, string } from "yup";
-
 export const SignupForm = ({ submit }) => {
   const initialValues = { email: "", name: "", password: "" };
   const handleSubmit = (data) => {
@@ -58,7 +57,7 @@ export const SignupForm = ({ submit }) => {
               onBlur={handleBlur("password")}
               value={values.password}
             />
-            <View >
+            <View className="rounded-md">
               <Button color="green" onPress={handleSubmit} title="Signup" />
             </View>
           </View>
