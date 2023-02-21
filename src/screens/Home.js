@@ -1,4 +1,3 @@
-// import { FC, memo } from "react";
 import { View } from "react-native";
 import { SignupForm } from "../components/SignupForm";
 
@@ -7,8 +6,10 @@ export const Home = ({ navigation, route }) => {
     navigation.navigate("Profile", { ...data });
   };
   return (
-    <View>
-      <SignupForm submit={handleSubmit} />
+    <View className="min-h-screen ">
+      <View className="w-4/5">
+        <SignupForm submit={handleSubmit} />
+      </View>
     </View>
   );
 };
