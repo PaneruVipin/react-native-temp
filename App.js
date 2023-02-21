@@ -2,33 +2,12 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import { Home } from "./src/screens/Home";
 const Stack = createNativeStackNavigator();
-const HomeScreen = ({ navigation }) => {
-  return (
-    <Button
-      title="Go to Jane's profile"
-      onPress={() => navigation.navigate("Profile", { name: "Jane" })}
-    />
-  );
-};
 const ProfileScreen = ({ navigation, route }) => {
-  const onPress = () => {
-    navigation.goBack();
-  };
   return (
     <View>
       <Text>This is {route.params.name}'s profile</Text>
-      <TouchableOpacity
-        accessible={true}
-        accessibilityLabel="Go back"
-        accessibilityHint="Navigates to the previous screen"
-        onPress={onPress}
-      >
-        <View style={styles.button}>
-          <Text style={styles.buttonText}>Back</Text>
-        </View>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -38,7 +17,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
-          component={HomeScreen}
+          component={Home}
           options={{ title: "Welcome" }}
         />
         <Stack.Screen
