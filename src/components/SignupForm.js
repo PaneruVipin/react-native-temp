@@ -48,6 +48,7 @@ export const SignupForm = ({ submit }) => {
               onBlur={handleBlur("email")}
               value={values.email}
             />
+
             <Input
               error={errors.password}
               touched={touched.password}

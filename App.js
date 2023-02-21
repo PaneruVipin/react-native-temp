@@ -1,12 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import { Text, View, Button, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Home } from "./src/screens/Home";
+import Ionicons from "@expo/vector-icons/Ionicons";
 const Stack = createNativeStackNavigator();
 const ProfileScreen = ({ navigation, route }) => {
   return (
     <View className="bg-red-500">
+      <Text>
+        <Ionicons name="md-checkmark-circle" size={32} color="green" />;
+      </Text>
       <Text>This is {route.params.name}'s profile</Text>
     </View>
   );
