@@ -7,43 +7,51 @@ import { Home } from "./src/screens/Home";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Notification from "./src/screens/Notification";
 import Account from "./src/screens/Account";
+import { Provider } from "react-redux";
+import { store } from "./features/store";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={{}}>
-        <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{
-            tabBarLabel: "Home",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="home" color={color} size={26} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Notifications"
-          component={Notification}
-          options={{
-            tabBarLabel: "Notifications",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="bell" color={color} size={26} />
-            ),
-          }}
-        />
-         <Tab.Screen
-          name="Account"
-          component={Account}
-          options={{
-            tabBarLabel: "Account",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="account" color={color} size={26} />
-            ),
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={{}}>
+          <Tab.Screen
+            name="Home"
+            component={Home}
+            options={{
+              tabBarLabel: "Home",
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="home" color={color} size={26} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Notifications"
+            component={Notification}
+            options={{
+              tabBarLabel: "Notifications",
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="bell" color={color} size={26} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Account"
+            component={Account}
+            options={{
+              tabBarLabel: "Account",
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={26}
+                />
+              ),
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
