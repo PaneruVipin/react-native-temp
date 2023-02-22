@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogin, userSignup } from "../../features/auth/authActions";
 import { SignupForm } from "../components/SignupForm";
 import { useEffect } from "react";
-import { getData } from "../../lib/asyncStorage";
 export const Home = ({ navigation, route }) => {
   const dispatch = useDispatch();
 

@@ -15,7 +15,37 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Tab.Navigator screenOptions={{}}>
+        <Tab.Navigator
+          screenOptions={{
+            headerTitle: "TeachTech",
+            headerRight: () => {
+              return (
+                <View>
+                  <Text className="mr-4 rounded-full border flex justify-center items-center">
+                    <MaterialCommunityIcons
+                      name="account"
+                      color={"black"}
+                      size={26}
+                    />
+                  </Text>
+                </View>
+              );
+            },
+            headerLeft: () => {
+              return (
+                <View>
+                  <Text className="mr-4 rounded-full border flex justify-center items-center">
+                    <MaterialCommunityIcons
+                      name="account"
+                      color={"black"}
+                      size={26}
+                    />
+                  </Text>
+                </View>
+              );
+            },
+          }}
+        >
           <Tab.Screen
             name="Home"
             component={Home}
