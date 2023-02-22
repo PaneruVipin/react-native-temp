@@ -1,8 +1,9 @@
 import { View } from "react-native";
+import { _retrieveData, _storeData } from "../../lib/asyncStorage";
 import { SignupForm } from "../components/SignupForm";
 
 export const Home = ({ navigation, route }) => {
-  const handleSubmit = (data) => {
+  const handleSubmit = async (data) => {
     navigation.navigate("Profile", { ...data });
   };
   return (

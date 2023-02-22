@@ -1,37 +1,49 @@
-import { Text, View, TouchableOpacity } from "react-native";
+import * as React from "react";
+import { Button, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "./src/screens/Home";
-import Ionicons from "@expo/vector-icons/Ionicons";
-const Stack = createNativeStackNavigator();
-const ProfileScreen = ({ navigation, route }) => {
-  return (
-    <View className="bg-red-500">
-      <Text>
-        <Ionicons name="md-checkmark-circle" size={32} color="green" />;
-      </Text>
-      <Text>This is {route.params.name}'s profile</Text>
-    </View>
-  );
-};
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Notification from "./src/screens/Notification";
+import Account from "./src/screens/Account";
+const Tab = createBottomTabNavigator();
+
 export default function App() {
-  const HeaderSetting = {
-    header: () => <View className="h-10 bg-blue-300" />,
-  };
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
+      <Tab.Navigator screenOptions={{}}>
+        <Tab.Screen
           name="Home"
           component={Home}
-          options={{ ...HeaderSetting }}
+          options={{
+            tabBarLabel: "Home",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="home" color={color} size={26} />
+            ),
+          }}
         />
-        <Stack.Screen
-          name="Profile"
-          options={{ ...HeaderSetting }}
-          component={ProfileScreen}
+        <Tab.Screen
+          name="Notifications"
+          component={Notification}
+          options={{
+            tabBarLabel: "Notifications",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="bell" color={color} size={26} />
+            ),
+          }}
         />
-      </Stack.Navigator>
+         <Tab.Screen
+          name="Account"
+          component={Account}
+          options={{
+            tabBarLabel: "Account",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="account" color={color} size={26} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
