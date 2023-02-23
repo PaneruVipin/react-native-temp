@@ -9,7 +9,11 @@ export const userSignup = createAsyncThunk(
       const { data: res } = await signup(data);
       return res;
     } catch (e) {
-      console.log("error in signup action", e);
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
     }
   }
 );
@@ -21,7 +25,7 @@ export const userLogin = createAsyncThunk(
       const { data: res } = await login(data);
       await storeData("token", res?.token);
       console.log("login succes", res);
-      return res
+      return res;
     } catch (e) {
       console.log("error in login action", e);
     }

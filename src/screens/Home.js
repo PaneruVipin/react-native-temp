@@ -1,23 +1,30 @@
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin, userSignup } from "../../features/auth/authActions";
 import { SignupForm } from "../components/SignupForm";
 import { useEffect } from "react";
+import { LoginForm } from "../components/LoginForm";
 export const Home = ({ navigation, route }) => {
   const dispatch = useDispatch();
-
-  const { userInfo, token } = useSelector((s) => s.auth);
+  const { userInfo, token, loading, error, success } = useSelector(
+    (s) => s.auth
+  );
   useEffect(() => {
-    console.log(userInfo, token);
-  }, [userInfo, token]);
-  const handleSubmit = async (data) => {
+    console.log(userInfo, token, loading, error, success);
+  }, [userInfo, token, loading, error, success]);
+  const handleSignup = (data) => {
+    dispatch(userSignup(data));
+  };
+  const handleLogin = (data) => {
     dispatch(userLogin(data));
   };
+
   return (
-    <View className="min-h-screen ">
+    <ScrollView>
       <View className="w-4/5 mx-auto mt-10">
-        <SignupForm submit={handleSubmit} />
+        <SignupForm submit={handleSignup} />
+        <LoginForm submit={handleLogin} />
       </View>
-    </View>
+    </ScrollView>
   );
 };

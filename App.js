@@ -9,41 +9,29 @@ import Notification from "./src/screens/Notification";
 import Account from "./src/screens/Account";
 import { Provider } from "react-redux";
 import { store } from "./features/store";
+import { Header, HeaderRightPart } from "./src/components/Header";
+import Logo from "./src/components/attoms/Logo";
 const Tab = createBottomTabNavigator();
-
+const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
         <Tab.Navigator
-          screenOptions={{
-            headerTitle: "TeachTech",
-            headerRight: () => {
-              return (
-                <View>
-                  <Text className="mr-4 rounded-full border flex justify-center items-center">
-                    <MaterialCommunityIcons
-                      name="account"
-                      color={"black"}
-                      size={26}
-                    />
-                  </Text>
+          screenOptions={(props) => {
+            return {
+              headerTitle: "TeachTech",
+              headerRight: () => (
+                <View className="mr-4">
+                  <HeaderRightPart {...props} />
                 </View>
-              );
-            },
-            headerLeft: () => {
-              return (
-                <View>
-                  <Text className="mr-4 rounded-full border flex justify-center items-center">
-                    <MaterialCommunityIcons
-                      name="account"
-                      color={"black"}
-                      size={26}
-                    />
-                  </Text>
+              ),
+              headerLeft: () => (
+                <View className="ml-3">
+                  <Logo />
                 </View>
-              );
-            },
+              ),
+            };
           }}
         >
           <Tab.Screen
@@ -60,25 +48,15 @@ export default function App() {
             name="Notifications"
             component={Notification}
             options={{
-              tabBarLabel: "Notifications",
-              tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="bell" color={color} size={26} />
-              ),
+              tabBarButton: () => null,
             }}
           />
           <Tab.Screen
+            options={{
+              tabBarButton: () => null,
+            }}
             name="Account"
             component={Account}
-            options={{
-              tabBarLabel: "Account",
-              tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons
-                  name="account"
-                  color={color}
-                  size={26}
-                />
-              ),
-            }}
           />
         </Tab.Navigator>
       </NavigationContainer>
