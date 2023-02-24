@@ -4,13 +4,14 @@ import { userLogin, userSignup } from "../../features/auth/authActions";
 import { SignupForm } from "../components/SignupForm";
 import { useEffect } from "react";
 import { LoginForm } from "../components/LoginForm";
+import { getData } from "../../lib/asyncStorage";
 export const Home = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const { userInfo, token, loading, error, success } = useSelector(
     (s) => s.auth
   );
   useEffect(() => {
-    console.log(userInfo, token, loading, error, success);
+    // console.log(userInfo, token, loading, error, success);
   }, [userInfo, token, loading, error, success]);
   const handleSignup = (data) => {
     dispatch(userSignup(data));

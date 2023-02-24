@@ -24,7 +24,6 @@ export const userLogin = createAsyncThunk(
     try {
       const { data: res } = await login(data);
       await storeData("token", res?.token);
-      console.log("login succes", res);
       return res;
     } catch (error) {
       if (error.response && error.response.data.message) {

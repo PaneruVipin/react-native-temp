@@ -3,7 +3,7 @@ import { getUser } from "../../apis/user";
 
 export const userFetch = createAsyncThunk(
   "user/getUser",
-  async ({}, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const { data: res } = await getUser();
       return res;

@@ -2,13 +2,11 @@ import { useFocusEffect } from "@react-navigation/native";
 import { createSlice } from "@reduxjs/toolkit";
 import { getData } from "../../lib/asyncStorage";
 import { userLogin, userSignup } from "./authActions";
-let token;
-getData("token").then((res) => (token = res));
+
 const initialState = {
   loading: false,
-  userInfo: null,
-  token,
-  error: null,
+  token: "",
+  error: "",
   success: false,
 };
 
@@ -19,11 +17,10 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(userLogin.pending, (state, { payload }) => {
       state.loading = true;
-      state.error = null;
+      state.error = "";
     });
     builder.addCase(userLogin.fulfilled, (state, { payload }) => {
       state.loading = false;
-      state.userInfo = payload;
       state.token = payload.token;
     });
     builder.addCase(userLogin.rejected, (state, { payload }) => {
@@ -32,7 +29,7 @@ const authSlice = createSlice({
     });
     builder.addCase(userSignup.pending, (state, { payload }) => {
       state.loading = true;
-      state.error = null;
+      state.error = "";
     });
     builder.addCase(userSignup.fulfilled, (state, { payload }) => {
       state.loading = false;
