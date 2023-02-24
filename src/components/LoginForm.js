@@ -3,10 +3,13 @@ import { Button, Text, View } from "react-native";
 import { Formik } from "formik";
 import Input from "./attoms/Input";
 import { object, string } from "yup";
-export const LoginForm = ({ submit }) => {
+import { useDispatch } from "react-redux";
+import { userLogin } from "../../features/auth/authActions";
+export const LoginForm = ({  }) => {
+  const dispatch=useDispatch()
   const initialValues = { email: "", password: "" };
   const handleSubmit = (data) => {
-    submit(data);
+    dispatch(userLogin(data))
   };
   const schema = object().shape({
     email: string().required().email(),
@@ -14,9 +17,9 @@ export const LoginForm = ({ submit }) => {
   });
   return (
     <View className="">
-      <Text className=" text-center text-2xl font-semibold font-mono mb-3">
+      {/* <Text className=" text-center text-2xl font-semibold font-mono mb-3">
         Login Form
-      </Text>
+      </Text> */}
       <Formik
         initialValues={initialValues}
         validationSchema={schema}

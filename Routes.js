@@ -1,13 +1,12 @@
 import { FC, memo } from "react";
 import { Button, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "./src/screens/Home";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Notification from "./src/screens/Notification";
 import Account from "./src/screens/Account";
-import { Header, HeaderRightPart } from "./src/components/Header";
+import { HeaderRightPart } from "./src/components/Header";
 import Logo from "./src/components/attoms/Logo";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +16,9 @@ const Tab = createBottomTabNavigator();
 const Routes = ({ ...props }) => {
   const dispatch = useDispatch();
   const { role } = useSelector((s) => s.user);
+  useEffect(() => {
+    // dispatch(userFetch())
+  }, []);
   return (
     <NavigationContainer>
       <Tab.Navigator

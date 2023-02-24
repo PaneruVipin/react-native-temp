@@ -3,7 +3,10 @@ import { Button, Text, View } from "react-native";
 import { Formik } from "formik";
 import Input from "./attoms/Input";
 import { object, string } from "yup";
-export const SignupForm = ({ submit }) => {
+import { useDispatch } from "react-redux";
+import { userSignup } from "../../features/auth/authActions";
+export const SignupForm = ({}) => {
+  const dispatch = useDispatch();
   const initialValues = {
     email: "",
     last_name: "",
@@ -11,7 +14,7 @@ export const SignupForm = ({ submit }) => {
     password: "",
   };
   const handleSubmit = (data) => {
-    submit(data);
+    dispatch(userSignup(data));
   };
   const schema = object().shape({
     email: string().required().email(),
@@ -21,9 +24,9 @@ export const SignupForm = ({ submit }) => {
   });
   return (
     <View className="">
-      <Text className=" text-center text-2xl font-semibold font-mono mb-3">
+      {/* <Text className=" text-center text-2xl font-semibold font-mono mb-3">
         Signup Form
-      </Text>
+      </Text> */}
       <Formik
         initialValues={initialValues}
         validationSchema={schema}

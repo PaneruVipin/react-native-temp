@@ -1,8 +1,19 @@
 import { FC, memo } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
+import { AuthGaurd, IfNoAuth } from "../../lib/AppGaurds";
+import Auth from "../components/Auth";
 
 const Account = ({ ...props }) => {
-  return <View></View>;
+  return (
+    <View>
+      <AuthGaurd>
+        <Text>Hello world</Text>
+      </AuthGaurd>
+      <IfNoAuth>
+        <Auth />
+      </IfNoAuth>
+    </View>
+  );
 };
 
 Account.defaultProps = {};

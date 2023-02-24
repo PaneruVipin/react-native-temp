@@ -1,6 +1,7 @@
 import { FC, memo } from "react";
 import { Text, View } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { AuthGaurd } from "../../lib/AppGaurds";
 
 export const HeaderRightPart = ({ navigation, route }) => {
   const routeName = route.name;
@@ -8,18 +9,20 @@ export const HeaderRightPart = ({ navigation, route }) => {
   const accountColor = routeName == "Account" ? "blue" : "gray";
   return (
     <View className="flex flex-row gap-x-3">
-      <View
-        className={`p-0.5 text-gray-300 rounded-full border border-gray-300 flex justify-center items-center`}
-      >
-        <Text>
-          <MaterialCommunityIcons
-            onPress={() => navigation.navigate("Notifications")}
-            name="bell"
-            color={bellColor}
-            size={20}
-          />
-        </Text>
-      </View>
+      <AuthGaurd>
+        <View
+          className={`p-0.5 text-gray-300 rounded-full border border-gray-300 flex justify-center items-center`}
+        >
+          <Text>
+            <MaterialCommunityIcons
+              onPress={() => navigation.navigate("Notifications")}
+              name="bell"
+              color={bellColor}
+              size={20}
+            />
+          </Text>
+        </View>
+      </AuthGaurd>
       <View
         className={`p-0.5 text-gray-300 rounded-full border border-gray-300 flex justify-center items-center`}
       >
