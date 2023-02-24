@@ -17,14 +17,6 @@ const Tab = createBottomTabNavigator();
 const Routes = ({ ...props }) => {
   const dispatch = useDispatch();
   const { role } = useSelector((s) => s.user);
-  const dispatchUser = async () => {
-    dispatch(userFetch());
-  };
-  useEffect(() => {
-    dispatchUser().then(() => {
-      console.log(role);
-    });
-  }, []);
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -32,12 +24,12 @@ const Routes = ({ ...props }) => {
           return {
             headerTitle: "TeachTech",
             headerRight: () => (
-              <View className="pr-4">
+              <View style={{ paddingRight: 8 }}>
                 <HeaderRightPart {...props} />
               </View>
             ),
             headerLeft: () => (
-              <View className="ml-3">
+              <View style={{ paddingLeft: 6 }}>
                 <Logo />
               </View>
             ),
