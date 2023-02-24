@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { removeData } from "../../lib/asyncStorage";
 import { userFetch } from "./userActions";
 const initialState = {
   loading: false,
@@ -7,11 +8,22 @@ const initialState = {
   success: false,
   role: "",
 };
-
+const logoutHandle = (state) => {
+  removeData("token");
+  state.loading = false;
+  state.userInfo = null;
+  state.error = "";
+  state.success = false;
+  state.role = "";
+};
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (s) => {
+      logoutHandle(s);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(userFetch.pending, (state, { payload }) => {
       state.loading = true;
@@ -31,4 +43,5 @@ const userSlice = createSlice({
     });
   },
 });
+export const { logout } = userSlice.actions;
 export default userSlice.reducer;

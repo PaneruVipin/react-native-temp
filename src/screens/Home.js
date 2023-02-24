@@ -7,14 +7,12 @@ import { LoginForm } from "../components/LoginForm";
 import { getData } from "../../lib/asyncStorage";
 import { AuthGaurd, IfNoAuth } from "../../lib/AppGaurds";
 import Auth from "../components/Auth";
+import { userFetch } from "../../features/user/userActions";
 export const Home = ({ navigation, route }) => {
- 
 
   return (
     <ScrollView>
-      <View className="w-4/5 mx-auto mt-10">
-        
-      </View>
+      <View className="w-4/5 mx-auto mt-10"></View>
     </ScrollView>
   );
 };

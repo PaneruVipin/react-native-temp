@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 import { Button, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -8,17 +8,16 @@ import Notification from "./src/screens/Notification";
 import Account from "./src/screens/Account";
 import { HeaderRightPart } from "./src/components/Header";
 import Logo from "./src/components/attoms/Logo";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userFetch } from "./features/user/userActions";
 const Tab = createBottomTabNavigator();
 
 const Routes = ({ ...props }) => {
   const dispatch = useDispatch();
-  const { role } = useSelector((s) => s.user);
+  const { token } = useSelector((s) => s.auth);
   useEffect(() => {
-    // dispatch(userFetch())
-  }, []);
+    dispatch(userFetch());
+  }, [token]);
   return (
     <NavigationContainer>
       <Tab.Navigator

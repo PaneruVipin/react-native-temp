@@ -18,13 +18,6 @@ Input.defaultProps = {};
 export default memo(Input);
 
 const styles = StyleSheet.create({
-  input: {
-    borderWidth: 0.8,
-    paddingHorizontal: 10,
-    paddingVertical: 3,
-    borderColor: "#808080",
-    borderRadius: 6,
-  },
   error: {
     color: "red",
     textAlign: "center",

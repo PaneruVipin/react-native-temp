@@ -24,9 +24,6 @@ export const SignupForm = ({}) => {
   });
   return (
     <View className="">
-      {/* <Text className=" text-center text-2xl font-semibold font-mono mb-3">
-        Signup Form
-      </Text> */}
       <Formik
         initialValues={initialValues}
         validationSchema={schema}

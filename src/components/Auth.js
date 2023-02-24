@@ -18,8 +18,8 @@ const Auth = ({ ...props }) => {
   };
   const Comp = components[currentTab];
   return (
-    <View>
-      <View className=" flex flex-row mt-2">
+    <View className="space-y-4">
+      <View className=" flex flex-row mt-2 ">
         <View className={`w-1/2 py-2 ${styles["LoginForm"]}`}>
           <Text className="text-center " name="LoginForm" onPress={handlePress}>
             Login
@@ -31,7 +31,9 @@ const Auth = ({ ...props }) => {
           </Text>
         </View>
       </View>
-      <Comp />
+      <View>
+        <Comp />
+      </View>
     </View>
   );
 };

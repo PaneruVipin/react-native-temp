@@ -5,11 +5,11 @@ import Input from "./attoms/Input";
 import { object, string } from "yup";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../features/auth/authActions";
-export const LoginForm = ({  }) => {
-  const dispatch=useDispatch()
+export const LoginForm = ({}) => {
+  const dispatch = useDispatch();
   const initialValues = { email: "", password: "" };
   const handleSubmit = (data) => {
-    dispatch(userLogin(data))
+    dispatch(userLogin(data));
   };
   const schema = object().shape({
     email: string().required().email(),
@@ -17,9 +17,6 @@ export const LoginForm = ({  }) => {
   });
   return (
     <View className="">
-      {/* <Text className=" text-center text-2xl font-semibold font-mono mb-3">
-        Login Form
-      </Text> */}
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
