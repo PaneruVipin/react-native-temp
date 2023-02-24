@@ -11,7 +11,7 @@ const Account = ({ ...props }) => {
   const dispatch = useDispatch();
   const { userInfo } = useSelector((s) => s.user);
   const handlePress = () => {
-    dispatch(logout);
+    dispatch(logout());
   };
   return (
     <View>

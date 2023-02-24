@@ -8,7 +8,7 @@ const initialState = {
   success: false,
   role: "",
 };
-const logoutHandle = (state) => {
+const logoutAction = (state) => {
   removeData("token");
   state.loading = false;
   state.userInfo = null;
@@ -20,9 +20,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    logout: (s) => {
-      logoutHandle(s);
-    },
+    logout: logoutAction,
   },
   extraReducers: (builder) => {
     builder.addCase(userFetch.pending, (state, { payload }) => {
